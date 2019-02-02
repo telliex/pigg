@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
+    id="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>谨贺新年</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.css">
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  <script src="./lib/p5.js" type="text/javascript"></script>
+  <script src="./lib/p5.play.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script>
+    var deviceW = $(window).width();
+    var deviceH = $(window).height();
+    var tail;
+
+    function preload() {
+
+      tail = loadAnimation('./tail/tail001.png', './tail/tail019.png');
+      tail.looping = false;
+    }
+
+    function setup() {
+      var put = createCanvas(deviceW, deviceH);
+      put.parent("myP5");
+    }
+
+    function draw() {
+      background(255, 255, 255);
+
+      if (mouseIsPressed)
+        tail.goToFrame(4);
+      else
+        tail.goToFrame(18);
+
+      animation(tail, 100, 100);
+    }
+
+    function mousePressed() {
+      //rewind on mouse pressed - change frame to 0
+      tail.rewind();
+    }
+
+    //微信转发
+    wx.config({
+      debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+      appId: '', // 必填，公众号的唯一标识
+      timestamp: 0, // 必填，生成签名的时间戳
+      nonceStr: '', // 必填，生成签名的随机串
+      signature: '', // 必填，签名
+      jsApiList: [] // 必填，需要使用的JS接口列表
+    });
+
+    wx.ready(function () { //通过ready接口处理成功验证
+      // config信息验证成功后会执行ready方法
+      wx.onMenuShareAppMessage({ // 分享给朋友  ,在config里面填写需要使用的JS接口列表，然后这个方法才可以用 
+        title: '这里是标题', // 分享标题
+        desc: 'This is a test!', // 分享描述
+        link: '链接', // 分享链接
+        imgUrl: '图片', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+          // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+          // 用户取消分享后执行的回调函数
+        }
+      });
+      wx.onMenuShareTimeline({ //分享朋友圈
+        title: '标题', // 分享标题
+        link: '链接',
+        imgUrl: '图片', // 分享图标
+        success: function () {
+          // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+          // 用户取消分享后执行的回调函数
+        }
+      });
+    });
+    wxx.error(function (res) { //通过error接口处理失败验证
+      // config信息验证失败会执行error函数
+    });
+  </script>
+</head>
+
+<body>
+  <div data-role="page">
+    <div data-role="none">
+
+    </div>
+    <div data-role="none">
+      <div id="myP5">
+      </div>
+    </div>
+    <div data-role="none">
+    </div>
+  </div>
+</body>
+
+</html>
