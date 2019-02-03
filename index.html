@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
@@ -19,7 +20,7 @@
     var deviceH = $(window).height(); // 装置高度
     var tail; // 尾巴
     var getBlessingTimer;
-    var BlessingString=['喜獲豬蹄','妙語如豬','樂如佩奇','猪事顺利','福相如豬','笑出豬叫','諸事大吉','豬圓玉潤','豬籠入水','金豬送福','青春永駐']
+    var BlessingString = ['喜獲豬蹄', '妙語如豬', '樂如佩奇', '猪事顺利', '福相如豬', '笑出豬叫', '諸事大吉', '豬圓玉潤', '豬籠入水', '金豬送福', '青春永駐']
     var interactionFn = {
       blessingNumber: 0, //
       getBlessing() {
@@ -90,6 +91,7 @@
       .then(function (res) {
         if (res.status == 200) {
           var r = res.data.data
+          console.log("666666")
           // //微信转发
           wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -100,6 +102,38 @@
             jsApiList: [] // 必填，需要使用的JS接口列表
           });
 
+          wx.ready(function () { //通过ready接口处理成功验证
+            // config信息验证成功后会执行ready方法
+            wx.onMenuShareAppMessage({ // 分享给朋友  ,在config里面填写需要使用的JS接口列表，然后这个方法才可以用 
+              title: '欣和祝你新年快乐!!', // 分享标题
+              desc: '欣和祝你猪事顺利', // 分享描述
+              link: 'https://www.shinhoglobal.com/happyNewYear', // 分享链接
+              imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
+              type: '', // 分享类型,music、video或link，不填默认为link
+              dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+              success: function () {
+                // 用户确认分享后执行的回调函数
+              },
+              cancel: function () {
+                // 用户取消分享后执行的回调函数
+              }
+            });
+            wx.onMenuShareTimeline({ //分享朋友圈
+              title: '欣和祝你新年快乐!!', // 分享标题
+              link: 'https://www.shinhoglobal.com/happyNewYear',
+              imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
+              success: function () {
+                // 用户确认分享后执行的回调函数
+              },
+              cancel: function () {
+                // 用户取消分享后执行的回调函数
+              }
+            });
+          });
+          wx.error(function (res) { //通过error接口处理失败验证
+            // config信息验证失败会执行error函数
+          });
+
         }
 
       }).catch(function (error) {
@@ -108,37 +142,7 @@
 
 
 
-    wx.ready(function () { //通过ready接口处理成功验证
-      // config信息验证成功后会执行ready方法
-      wx.onMenuShareAppMessage({ // 分享给朋友  ,在config里面填写需要使用的JS接口列表，然后这个方法才可以用 
-        title: '欣和祝你新年快乐!!', // 分享标题
-        desc: 'This is a test!', // 分享描述
-        link: 'https://www.shinhoglobal.com/happyNewYear', // 分享链接
-        imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
-        type: '', // 分享类型,music、video或link，不填默认为link
-        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-        success: function () {
-          // 用户确认分享后执行的回调函数
-        },
-        cancel: function () {
-          // 用户取消分享后执行的回调函数
-        }
-      });
-      wx.onMenuShareTimeline({ //分享朋友圈
-        title: '欣和祝你新年快乐!!', // 分享标题
-        link: 'https://www.shinhoglobal.com/happyNewYear',
-        imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
-        success: function () {
-          // 用户确认分享后执行的回调函数
-        },
-        cancel: function () {
-          // 用户取消分享后执行的回调函数
-        }
-      });
-    });
-    wx.error(function (res) { //通过error接口处理失败验证
-      // config信息验证失败会执行error函数
-    });
+
   </script>
 </head>
 
