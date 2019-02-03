@@ -13,7 +13,9 @@
   <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <script src="./lib/p5.js" type="text/javascript"></script>
   <script src="./lib/p5.play.js" type="text/javascript"></script>
+  <script src="./lib/yj-script.js" type="text/javascript"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="yj-style.css">
   <script>
     var deviceW = $(window).width();
     var deviceH = $(window).height();
@@ -23,7 +25,7 @@
     function preload() {
 
       tail = loadAnimation('./tail/tail001.png', './tail/tail019.png');
-      
+
       tail.looping = false;
     }
 
@@ -41,7 +43,7 @@
 
       animation(tail, 50, 30);
       scale(0.1);
-      
+
     }
 
     function mousePressed() {
@@ -61,7 +63,7 @@
 
     wx.ready(function () { //通过ready接口处理成功验证
       // config信息验证成功后会执行ready方法
-      wx.onMenuShareAppMessage({ // 分享给朋友  ,在config里面填写需要使用的JS接口列表，然后这个方法才可以用 
+      wx.onMenuShareAppMessage({ // 分享给朋友  ,在config里面填写需要使用的JS接口列表，然后这个方法才可以用
         title: '这里是标题', // 分享标题
         desc: 'This is a test!', // 分享描述
         link: '链接', // 分享链接
@@ -94,7 +96,7 @@
 </head>
 
 <body>
-  
+
   <div data-role="page" class="container">
     <div class="main-inner">
       <div data-role="none" class="main-inner__header">
@@ -111,9 +113,23 @@
     </div>
     <div data-role="none" class="main-inner__add">
         <img src="./images/describe.png" class="main-inner__add-describe" />
-        <img src="./images/share.png" class="main-inner__add-share" />  
+        <img src="./images/share.png" class="main-inner__add-share" />
       </div>
   </div>
+
+  <!--输入名字弹出框-->
+  <div class="mask" id="popup">
+    <div class="popup-name">
+      <h3>请输入你的名字或昵称 <span><span class="length">0</span>/5</span></h3>
+      <div><input type="text" class="txt" /></div>
+      <p>(你的名字或昵称会被印在定制的猪福上)</p>
+      <div class="foot">
+        <img src="./images/cancel.png" class="cancel" alt="">
+        <img src="./images/confirm.png" class="confirm" alt="">
+      </div>
+    </div>
+  </div>
+  <!--/输入名字弹出框-->
 
 </body>
 
