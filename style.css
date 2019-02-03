@@ -110,18 +110,17 @@ img {
 
 
 .container{
-  background: url(./images/bg-top.png) top center no-repeat;
-  background-size: cover;
--webkit-background-size: cover;
--moz-background-size: cover;
-height: 100vh;
+  background:#FFF url(./images/bg-top.png) top center no-repeat;
+  background-size: contain;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  height: 100vh;
 }
 .main-inner{
   background: url(./images/bg-bottom.png) bottom center no-repeat;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  height: 100vh;
+  background-size: contain;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
   margin-top:0;
 }
 .main-inner__header{
