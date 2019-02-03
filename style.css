@@ -141,6 +141,12 @@ height: 100vh;
   width: 95vw;
   margin: 5vh auto 0;
   height: 56vw;
+  position: relative;
+}
+#myP5{
+  position: absolute;
+  left: 22vw;
+  top: 40vw;
 }
 .main-inner__footter {
   height: 40vh;
