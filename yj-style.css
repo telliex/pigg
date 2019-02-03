@@ -1,3 +1,26 @@
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.main-inner__qrcode {
+    display: none;
+}
+.main-inner__qrcode dl dt,
+.main-inner__qrcode dl dd {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.main-inner__qrcode dl dt {
+    letter-spacing: 8px;
+}
+.main-inner__qrcode dl dd img {
+    display: inline-block;
+    margin: auto;
+}
+
 .mask {
     display: none;
     position: fixed;
@@ -48,4 +71,36 @@
     width: 100px;
     display: inline-block;
     margin: 0 12px;
+}
+
+.footer-share-btn {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 16px 24px;
+    height: 68px;
+    background-color: #483637;
+}
+
+.footer-share-btn img {
+    margin: 0 8px;
+    display: inline-block;
+}
+
+.share-tip .content {
+    color: #fff;
+    font-size: 18px;
+    line-height: 28px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+.share-tip .content img {
+    display: inline-block;
+    margin-top: 24px;
 }

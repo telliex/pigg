@@ -14,6 +14,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
   <script src="./lib/p5.js" type="text/javascript"></script>
   <script src="./lib/p5.play.js" type="text/javascript"></script>
+  <script src="./lib/html2canvas.js" type="text/javascript"></script>
+  <script src="./lib/canvas2image.js" type="text/javascript"></script>
   <script src="./lib/yj-script.js" type="text/javascript"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="yj-style.css">
@@ -138,8 +140,17 @@
       </div>
     </div>
     <div data-role="none" class="main-inner__footter">
-      <img src="./images/congratulate.png" class="main-inner__footter_word" />
+      <!--<img src="./images/congratulate.png" class="main-inner__footter_word" />-->
+      <h3><span id="nickname"></span>恭祝您</h3>
       <img src="./blessing/blessing1.png" class="main-inner__footter-congratulate" width="80vw" />
+      <div class="main-inner__qrcode">
+        <dl>
+          <dt>试码生成<br>定制祝福</dt>
+          <dd>
+            <img src="./images/qrcode.png" width="100" alt="">
+          </dd>
+        </dl>
+      </div>
     </div>
   </div>
   <div data-role="none" class="main-inner__add">
@@ -161,6 +172,33 @@
   </div>
 </div>
 <!--/输入名字弹出框-->
+
+<!--底部分享按钮-->
+<div class="footer-share-btn">
+  <span class="fl">
+    <img src="./images/edit-btn.png" class="edit-btn fl" width="80" alt="">
+  </span>
+  <span class="fr">
+    <img src="./images/save-btn.png" class="save-btn fl" width="80" alt="">
+    <img src="./images/share-btn.png" class="share-btn fr" width="80" alt="">
+  </span>
+</div>
+<!--/底部分享按钮-->
+
+<!--分享提示-->
+<div class="mask share-tip" id="share-tip">
+  <div class="content">
+    <p>右上角点击<br>
+      "发送给朋友"<br>
+      或<br>
+      "分享至朋友圈"
+    </p>
+    <p>
+      <img src="./images/confirm.png" class="share-confirm-btn" width="120" alt="" />
+    </p>
+  </div>
+</div>
+<!--/分享提示-->
 
 </body>
 
