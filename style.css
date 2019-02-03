@@ -122,20 +122,22 @@ img {
   -webkit-background-size: contain;
   -moz-background-size: contain;
   margin-top:0;
+  /* padding-bottom: 10vh; */
 }
 .main-inner__header{
-  height: 20vh;
+ padding-top: 3vh;
+ padding-bottom: 6vh;
 }
 .main-inner__header_title{
   width: 13vw;
-  margin: 7vw auto 0;
+  margin: 0 auto;
 }
 .main-inner__body{
 }
 #myP5{
 }
 .main-inner__footter {
-  height: 40vh;
+  height: 50vh;
 }
 .main-inner__footter h3 {
   text-align: center;
@@ -150,7 +152,7 @@ img {
 
 .main-inner__footter-congratulate{
   width: 80vw;
-  margin: 10vw auto;
+  margin: 3vh auto;
 }
 .main-inner__add{
   position: absolute;
