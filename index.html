@@ -18,27 +18,29 @@
     var deviceW = $(window).width();
     var deviceH = $(window).height();
     var tail;
+    $('.container').css({width:deviceW,height:deviceH})
 
     function preload() {
 
       tail = loadAnimation('./tail/tail001.png', './tail/tail019.png');
+      
       tail.looping = false;
     }
 
     function setup() {
-      var put = createCanvas(deviceW, deviceH);
+      var put = createCanvas(deviceW/5, deviceW/5);
       put.parent("myP5");
     }
 
     function draw() {
       background(255, 255, 255);
-
       if (mouseIsPressed)
         tail.goToFrame(4);
       else
         tail.goToFrame(18);
 
-      animation(tail, 100, 100);
+      animation(tail, 0, 0);
+      
     }
 
     function mousePressed() {
@@ -84,24 +86,34 @@
         }
       });
     });
-    wxx.error(function (res) { //通过error接口处理失败验证
+    wx.error(function (res) { //通过error接口处理失败验证
       // config信息验证失败会执行error函数
     });
   </script>
 </head>
 
 <body>
-  <div data-role="page">
-    <div data-role="none">
-
-    </div>
-    <div data-role="none">
-      <div id="myP5">
+  
+  <div data-role="page" class="container">
+    <div class="main-inner">
+      <div data-role="none" class="main-inner__header">
+        <img src="./images/title.png" class="main-inner__header_title" />
+      </div>
+      <div data-role="none" class="main-inner__body">
+        <div id="myP5">
+        </div>
+      </div>
+      <div data-role="none" class="main-inner__footter">
+          <img src="./images/congratulate.png" class="main-inner__footter_word" />
+          <img src="./images/congratulate-1.png" class="main-inner__footter-congratulate" />
       </div>
     </div>
-    <div data-role="none">
-    </div>
+    <div data-role="none" class="main-inner__add">
+        <img src="./images/describe.png" class="main-inner__add-describe" />
+        <img src="./images/share.png" class="main-inner__add-share" />  
+      </div>
   </div>
+
 </body>
 
 </html>
