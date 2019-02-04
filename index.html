@@ -91,7 +91,13 @@
             timestamp: r.timestamp, // 必填，生成签名的时间戳
             nonceStr: r.nonceStr, // 必填，生成签名的随机串
             signature: r.signature, // 必填，签名
-            jsApiList: [] // 必填，需要使用的JS接口列表
+            jsApiList: [
+              "checkJsApi",
+              "chooseImage", 
+              "getLocalImgData",
+              "onMenuShareTimeline",
+              "onMenuShareAppMessage",
+            ] // 必填，需要使用的JS接口列表
           });
           wx.ready(function () { //通过ready接口处理成功验证
             // config信息验证成功后会执行ready方法
