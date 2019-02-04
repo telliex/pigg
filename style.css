@@ -110,14 +110,14 @@ img {
 
 
 .container{
-  background:#FFF url(./images/bg-top.png) top center no-repeat;
+  background:#FFF url(./images/bg-top.png) center -7vh no-repeat;
   background-size: contain;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   /* height: 100vh; */
 }
 .main-inner{
-  background: url(./images/bg-bottom.png) bottom center no-repeat;
+  background: url(./images/bg-bottom.png) center 70vh no-repeat;
   background-size: contain;
   -webkit-background-size: contain;
   -moz-background-size: contain;
@@ -126,10 +126,10 @@ img {
 }
 .main-inner__header{
  padding-top: 3vh;
- padding-bottom: 6vh;
+ padding-bottom: 3vh;
 }
 .main-inner__header_title{
-  width: 13vw;
+  width: 10vw;
   margin: 0 auto;
 }
 .main-inner__body{
@@ -137,11 +137,11 @@ img {
 #myP5{
 }
 .main-inner__footter {
-  height: 50vh;
+  height: 34vh;
 }
 .main-inner__footter h3 {
   text-align: center;
-  font-size: 20px;
+  font-size: 5vw;
   letter-spacing: 5px;
   color: #3b3f33;
 }
@@ -151,14 +151,14 @@ img {
 }
 
 .main-inner__footter-congratulate{
-  width: 80vw;
-  margin: 3vh auto;
+  width: 70vw;
+  margin: 2vh auto;
 
 }
 
 .main-inner__add{
   position: absolute;
-  bottom: 0;
+  bottom: 10vh;
   display: flex;
   flex-direction:row;
   height: 10vh;
