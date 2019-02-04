@@ -34,6 +34,7 @@
         clearInterval(getBlessingTimer);
         getBlessingTimer = setInterval(() => {
           var temp = this.getBlessing();
+          console.log("temp:"+temp)
           if (temp === this.blessingNumber) {
             temp = this.getBlessing();
           } else {
@@ -42,7 +43,7 @@
             $('.main-inner__footter-congratulate').attr('src', './blessing/blessing' + this.blessingNumber +
               '.png');
             $('.main-inner__footter-congratulate').delay(200).fadeTo(100, 1, function () {
-              clickLock = false;
+              shareConnet();
             });
 
           }
@@ -95,7 +96,7 @@
           //rewind on mouse pressed - change frame to 0
           $('.main-inner__footter-congratulate').fadeTo(100, 0, function () {
             interactionFn.getBlessingNumber();
-            shareConnet();
+            
           });
           tail.rewind();
         }
@@ -108,9 +109,11 @@
       axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + location.href)
         .then(function (res) {
           if (res.status == 200) {
+            clickLock = false;
             var r = res.data.data;
 
             shareDec = BlessingString[interactionFn.blessingNumber];
+            console.log("shareDec:"+shareDec)
             //微信转发
             wx.config({
               debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
