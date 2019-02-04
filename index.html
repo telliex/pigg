@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
-        id="viewport" />
+    id="viewport" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>谨贺新年 | 欣和</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.css">
@@ -20,191 +20,189 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="yj-style.css">
   <script>
-      var deviceW = $(window).width(); // 装置宽度
-      console.log('deviceW:'+deviceW)
-      var deviceH = $(window).height(); // 装置高度
-      console.log('deviceH:'+deviceH)
-      var tail; // 尾巴
-      var getBlessingTimer;
-      var BlessingString = ['喜獲豬蹄', '妙語如豬', '樂如佩奇', '猪事顺利', '福相如豬', '笑出豬叫', '諸事大吉', '豬圓玉潤', '豬籠入水', '金豬送福', '青春永駐']
-      var interactionFn = {
-          blessingNumber: 0, //
-          getBlessing() {
-              return Math.floor(Math.random() * 11)  // 随机 0-10
-          },
-          getBlessingNumber() {
-              clearInterval(getBlessingTimer);
-              getBlessingTimer = setInterval(() => {
-                  var temp = this.getBlessing();
-                  if (temp === this.blessingNumber) {
-                      temp = this.getBlessing();
-                  } else {
-                      this.blessingNumber = temp;
-                      clearInterval(getBlessingTimer);
-                      $('.main-inner__footter-congratulate').attr('src', './blessing/blessing' + this.blessingNumber +
-                          '.png');
-                      $('.main-inner__footter-congratulate').show(600);
-                  }
-              }, 100);
+    var deviceW = $(window).width(); // 装置宽度
+    console.log('deviceW:' + deviceW)
+    var deviceH = $(window).height(); // 装置高度
+    console.log('deviceH:' + deviceH)
+    var tail; // 尾巴
+    var getBlessingTimer;
+    var BlessingString = ['喜獲豬蹄', '妙語如豬', '樂如佩奇', '猪事顺利', '福相如豬', '笑出豬叫', '諸事大吉', '豬圓玉潤', '豬籠入水', '金豬送福', '青春永駐']
+    var interactionFn = {
+      blessingNumber: 0, //
+      getBlessing() {
+        return Math.floor(Math.random() * 11)  // 随机 0-10
+      },
+      getBlessingNumber() {
+        clearInterval(getBlessingTimer);
+        getBlessingTimer = setInterval(() => {
+          var temp = this.getBlessing();
+          if (temp === this.blessingNumber) {
+            temp = this.getBlessing();
+          } else {
+            this.blessingNumber = temp;
+            clearInterval(getBlessingTimer);
+            $('.main-inner__footter-congratulate').attr('src', './blessing/blessing' + this.blessingNumber +'.png');
+            $('.main-inner__footter-congratulate').delay(500).fadeTo(100,1);
+    
           }
-      };
-      $('.container').css({
-          width: deviceW,
-          height: deviceH
-      })
-      function preload() {
-          tail = loadAnimation('./tail/tail-01.png', './tail/tail-30.png');
-          tail.looping = false;
+        }, 100);
       }
-      function setup() {
-          var put = createCanvas(deviceW, 517 * deviceW / 720);
-          put.parent("myP5");
-          tail.changeFrame(21);
-      }
-      function draw() {
-          scale(deviceW/720) // 动画缩放
-          background(255, 255, 255);
-          if (mouseIsPressed)
-              tail.goToFrame(4);
-          else
-              tail.goToFrame(29);
-          if (tail.getFrame() == 29)
-              tail.changeFrame(21);
-          animation(tail, deviceW, 517 * deviceW / 720);
-      }
-      function mouseClicked() {
-        console.log("22222")
-          //rewind on mouse pressed - change frame to 0
-          $('.main-inner__footter-congratulate').hide(600);
-          interactionFn.getBlessingNumber();
-          tail.rewind();
-      }
-      
-      function mousedown() {
-      }
-      axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + location.href)
-          .then(function (res) {
-              if (res.status == 200) {
-                  var r = res.data.data
-                  // //微信转发
-                  wx.config({
-                      debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                      appId: r.appId, // 必填，公众号的唯一标识
-                      timestamp: r.timestamp, // 必填，生成签名的时间戳
-                      nonceStr: r.nonceStr, // 必填，生成签名的随机串
-                      signature: r.signature, // 必填，签名
-                      jsApiList: [] // 必填，需要使用的JS接口列表
-                  });
-                  wx.ready(function () { //通过ready接口处理成功验证
-                      // config信息验证成功后会执行ready方法
-                      wx.onMenuShareAppMessage({ // 分享给朋友  ,在config里面填写需要使用的JS接口列表，然后这个方法才可以用
-                          title: '欣和祝你新年快乐!!', // 分享标题
-                          desc: '欣和祝你猪事顺利', // 分享描述
-                          link: 'https://www.shinhoglobal.com/happyNewYear', // 分享链接
-                          imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
-                          type: '', // 分享类型,music、video或link，不填默认为link
-                          dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                          success: function () {
-                              // 用户确认分享后执行的回调函数
-                          },
-                          cancel: function () {
-                              // 用户取消分享后执行的回调函数
-                          }
-                      });
-                      wx.onMenuShareTimeline({ //分享朋友圈
-                          title: '欣和祝你新年快乐!!', // 分享标题
-                          link: 'https://www.shinhoglobal.com/happyNewYear',
-                          imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
-                          success: function () {
-                              // 用户确认分享后执行的回调函数
-                          },
-                          cancel: function () {
-                              // 用户取消分享后执行的回调函数
-                          }
-                      });
-                  });
-                  wx.error(function (res) { //通过error接口处理失败验证
-                      // config信息验证失败会执行error函数
-                  });
+    };
+    $('.container').css({
+      width: deviceW,
+      height: deviceH
+    })
+    function preload() {
+      tail = loadAnimation('./tail/tail-01.png', './tail/tail-30.png');
+      tail.looping = false;
+    }
+    function setup() {
+      var put = createCanvas(deviceW, 517 * deviceW / 720);
+      put.parent("myP5");
+      tail.changeFrame(21);
+    }
+    function draw() {
+      scale(deviceW / 720) // 动画缩放
+      background(255, 255, 255);
+      if (mouseIsPressed)
+        tail.goToFrame(4);
+      else
+        tail.goToFrame(29);
+      if (tail.getFrame() == 29)
+        tail.changeFrame(21);
+      animation(tail, deviceW, 517 * deviceW / 720);
+    }
+    function mouseClicked() {
+      //rewind on mouse pressed - change frame to 0
+      $('.main-inner__footter-congratulate').fadeTo(300,0,function(){
+        interactionFn.getBlessingNumber();
+      });
+      tail.rewind();
+    }
+
+    axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + location.href)
+      .then(function (res) {
+        if (res.status == 200) {
+          var r = res.data.data
+          // //微信转发
+          wx.config({
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: r.appId, // 必填，公众号的唯一标识
+            timestamp: r.timestamp, // 必填，生成签名的时间戳
+            nonceStr: r.nonceStr, // 必填，生成签名的随机串
+            signature: r.signature, // 必填，签名
+            jsApiList: [] // 必填，需要使用的JS接口列表
+          });
+          wx.ready(function () { //通过ready接口处理成功验证
+            // config信息验证成功后会执行ready方法
+            wx.onMenuShareAppMessage({ // 分享给朋友  ,在config里面填写需要使用的JS接口列表，然后这个方法才可以用
+              title: '欣和祝你新年快乐!!', // 分享标题
+              desc: '欣和祝你猪事顺利', // 分享描述
+              link: 'https://www.shinhoglobal.com/happyNewYear', // 分享链接
+              imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
+              type: '', // 分享类型,music、video或link，不填默认为link
+              dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+              success: function () {
+                // 用户确认分享后执行的回调函数
+              },
+              cancel: function () {
+                // 用户取消分享后执行的回调函数
               }
-          }).catch(function (error) {
+            });
+            wx.onMenuShareTimeline({ //分享朋友圈
+              title: '欣和祝你新年快乐!!', // 分享标题
+              link: 'https://www.shinhoglobal.com/happyNewYear',
+              imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
+              success: function () {
+                // 用户确认分享后执行的回调函数
+              },
+              cancel: function () {
+                // 用户取消分享后执行的回调函数
+              }
+            });
+          });
+          wx.error(function (res) { //通过error接口处理失败验证
+            // config信息验证失败会执行error函数
+          });
+        }
+      }).catch(function (error) {
       });
   </script>
 </head>
 
 <body>
 
-<div data-role="page" >
-  <div class="container">
-  <div class="main-inner">
-    <div data-role="none" class="main-inner__header">
-      <img src="./images/title.png" class="main-inner__header_title" />
-    </div>
-    <div data-role="none" class="main-inner__body">
-      <div id="myP5">
+  <div data-role="page">
+    <div class="container">
+      <div class="main-inner">
+        <div data-role="none" class="main-inner__header">
+          <img src="./images/title.png" class="main-inner__header_title" />
+        </div>
+        <div data-role="none" class="main-inner__body">
+          <div id="myP5">
+          </div>
+        </div>
+        <div data-role="none" class="main-inner__footter">
+          <!--<img src="./images/congratulate.png" class="main-inner__footter_word" />-->
+          <h3><span id="nickname"></span>恭祝您</h3>
+          <img src="./blessing/blessing0.png" class="main-inner__footter-congratulate" width="80vw" />
+          <div class="main-inner__qrcode">
+            <dl>
+              <dt>试码生成<br>定制祝福</dt>
+              <dd>
+                <img src="./images/qrcode.png" width="100" alt="">
+              </dd>
+            </dl>
+          </div>
+        </div>
       </div>
     </div>
-    <div data-role="none" class="main-inner__footter">
-      <!--<img src="./images/congratulate.png" class="main-inner__footter_word" />-->
-      <h3><span id="nickname"></span>恭祝您</h3>
-      <img src="./blessing/blessing1.png" class="main-inner__footter-congratulate" width="80vw" />
-      <div class="main-inner__qrcode">
-        <dl>
-          <dt>试码生成<br>定制祝福</dt>
-          <dd>
-            <img src="./images/qrcode.png" width="100" alt="">
-          </dd>
-        </dl>
+    <div data-role="none" class="main-inner__add">
+      <img src="./images/describe.png" class="main-inner__add-describe" />
+      <img src="./images/share.png" class="main-inner__add-share" />
+    </div>
+  </div>
+
+  <!--输入名字弹出框-->
+  <div class="mask" id="popup">
+    <div class="popup-name">
+      <h3>请输入你的名字或昵称 <span><span class="length">0</span>/5</span></h3>
+      <div><input type="text" class="txt" /></div>
+      <p>(你的名字或昵称会被印在定制的猪福上)</p>
+      <div class="foot">
+        <img src="./images/cancel.png" class="cancel" alt="">
+        <img src="./images/confirm.png" class="confirm" alt="">
       </div>
     </div>
   </div>
-  </div>
-  <div data-role="none" class="main-inner__add">
-    <img src="./images/describe.png" class="main-inner__add-describe" />
-    <img src="./images/share.png" class="main-inner__add-share" />
-  </div>
-</div>
+  <!--/输入名字弹出框-->
 
-<!--输入名字弹出框-->
-<div class="mask" id="popup">
-  <div class="popup-name">
-    <h3>请输入你的名字或昵称 <span><span class="length">0</span>/5</span></h3>
-    <div><input type="text" class="txt" /></div>
-    <p>(你的名字或昵称会被印在定制的猪福上)</p>
-    <div class="foot">
-      <img src="./images/cancel.png" class="cancel" alt="">
-      <img src="./images/confirm.png" class="confirm" alt="">
+  <!--底部分享按钮-->
+  <div class="footer-share-btn">
+    <span class="fl">
+      <img src="./images/edit-btn.png" class="edit-btn fl" width="80" alt="">
+    </span>
+    <span class="fr">
+      <img src="./images/save-btn.png" class="save-btn fl" width="80" alt="">
+      <img src="./images/share-btn.png" class="share-btn fr" width="80" alt="">
+    </span>
+  </div>
+  <!--/底部分享按钮-->
+
+  <!--分享提示-->
+  <div class="mask share-tip" id="share-tip">
+    <div class="content">
+      <p>右上角点击<br>
+        "发送给朋友"<br>
+        或<br>
+        "分享至朋友圈"
+      </p>
+      <p>
+        <img src="./images/confirm.png" class="share-confirm-btn" width="120" alt="" />
+      </p>
     </div>
   </div>
-</div>
-<!--/输入名字弹出框-->
-
-<!--底部分享按钮-->
-<div class="footer-share-btn">
-  <span class="fl">
-    <img src="./images/edit-btn.png" class="edit-btn fl" width="80" alt="">
-  </span>
-  <span class="fr">
-    <img src="./images/save-btn.png" class="save-btn fl" width="80" alt="">
-    <img src="./images/share-btn.png" class="share-btn fr" width="80" alt="">
-  </span>
-</div>
-<!--/底部分享按钮-->
-
-<!--分享提示-->
-<div class="mask share-tip" id="share-tip">
-  <div class="content">
-    <p>右上角点击<br>
-      "发送给朋友"<br>
-      或<br>
-      "分享至朋友圈"
-    </p>
-    <p>
-      <img src="./images/confirm.png" class="share-confirm-btn" width="120" alt="" />
-    </p>
-  </div>
-</div>
-<!--/分享提示-->
+  <!--/分享提示-->
 
 </body>
 
