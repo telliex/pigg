@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
@@ -40,7 +39,7 @@
               this.blessingNumber = temp;
               clearInterval(getBlessingTimer);
               $('.main-inner__footter-congratulate').attr('src', './blessing/blessing' + this.blessingNumber +'.png');
-              $('.main-inner__footter-congratulate').delay(500).fadeTo(100,1);
+              $('.main-inner__footter-congratulate').delay(200).fadeTo(100,1);
     
             }
           }, 100);
@@ -87,7 +86,7 @@
     
         if(e.target.id=="defaultCanvas0"){
           //rewind on mouse pressed - change frame to 0
-          $('.main-inner__footter-congratulate').fadeTo(300,0,function(){
+          $('.main-inner__footter-congratulate').fadeTo(100,0,function(){
             interactionFn.getBlessingNumber();
           });
           tail.rewind();
@@ -102,7 +101,7 @@
             var r = res.data.data
             // //微信转发
             wx.config({
-              debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+              debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
               appId: r.appId, // 必填，公众号的唯一标识
               timestamp: r.timestamp, // 必填，生成签名的时间戳
               nonceStr: r.nonceStr, // 必填，生成签名的随机串
