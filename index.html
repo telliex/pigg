@@ -72,13 +72,14 @@
               tail.changeFrame(21);
           animation(tail, deviceW, 517 * deviceW / 720);
       }
-      function mousePressed() {
+      function mouseClicked() {
         console.log("22222")
           //rewind on mouse pressed - change frame to 0
           $('.main-inner__footter-congratulate').hide(600);
           interactionFn.getBlessingNumber();
           tail.rewind();
       }
+      
       function mousedown() {
       }
       axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + location.href)
