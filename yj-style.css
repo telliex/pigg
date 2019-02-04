@@ -15,6 +15,7 @@
 }
 .main-inner__qrcode dl dt {
     letter-spacing: 8px;
+    padding-left: 10px;
 }
 .main-inner__qrcode dl dd img {
     display: inline-block;
@@ -100,8 +101,16 @@
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
+    z-index: 9;
 }
 .share-tip .content img {
     display: inline-block;
     margin-top: 24px;
+}
+.share-tip i {
+    display: block;
+    position: fixed;
+    right: 24px;
+    top: 24px;
+    z-index: 10;
 }
