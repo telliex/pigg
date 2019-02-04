@@ -83,11 +83,10 @@
           tail.changeFrame(21);
         animation(tail, deviceW, 517 * deviceW / 720);
       }
-      function mouseClicked(e) {  
-        
+      function mouseClicked(e) {     
         if(clickLock===false){
-          clickLock=true;
           if(e.target.id=="defaultCanvas0"){
+            clickLock=true;
           //rewind on mouse pressed - change frame to 0
           $('.main-inner__footter-congratulate').fadeTo(100,0,function(){
             interactionFn.getBlessingNumber();
@@ -101,10 +100,12 @@
       }
       // 后端 ajax
       function shareConnet(){
+        console.log("shareTitle:"+shareTitle)
         axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + location.href)
         .then(function (res) {
           if (res.status == 200) {
             var r = res.data.data;
+            
             shareDec= BlessingString[interactionFn.blessingNumber];
             // //微信转发
             wx.config({
