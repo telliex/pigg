@@ -55,8 +55,11 @@
     var sharePersion = '欣和'; // 分享人
     var shareTitle = sharePersion + ' 恭祝您欣年快乐，和家平安'; // 分享标题
     var shareDec = BlessingString[interactionFn.blessingNumber]; // 分享贺话
-
-    console.log(location.href);
+   
+    if(location.href!=='https://www.shinhoglobal.com/happyNewYear/'){
+      window.location.replace('https://www.shinhoglobal.com/happyNewYear/');
+    }
+  
     
     $('.container').css({
       width: deviceW,
@@ -108,8 +111,8 @@
     }
     // 后端 ajax
     function shareConnet() {
-      axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + location.href)
-      // axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + 'https://www.shinhoglobal.com/happyNewYear/')
+      // axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + location.href)
+      axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=https://www.shinhoglobal.com/happyNewYear/')
         .then(function (res) {
           if (res.status == 200) {
             clickLock = false;
