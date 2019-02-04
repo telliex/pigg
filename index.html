@@ -105,7 +105,6 @@
     </dl>
   </div>
   <!--生成图片-->
-
 </body>
 <link rel="stylesheet" type="text/css" href="yj-style.css">
 <script>
@@ -148,6 +147,11 @@
     width: deviceW,
     height: deviceH
   })
+  $('.main-inner__body').css({
+    width: deviceW,
+    height: 517 * deviceW / 720
+  })
+  
   // P5.js 函数
   function preload() {
     tail = loadAnimation('./tail/tail-01.png', './tail/tail-30.png');
@@ -169,12 +173,18 @@
       tail.changeFrame(21);
     animation(tail, deviceW, 517 * deviceW / 720);
   }
-  function mouseClicked() {  
-    //rewind on mouse pressed - change frame to 0
-    $('.main-inner__footter-congratulate').fadeTo(300,0,function(){
-      interactionFn.getBlessingNumber();
-    });
-    tail.rewind();
+  function mouseClicked(e) {  
+    
+
+    if(e.target.id=="defaultCanvas0"){
+      //rewind on mouse pressed - change frame to 0
+      $('.main-inner__footter-congratulate').fadeTo(300,0,function(){
+        interactionFn.getBlessingNumber();
+      });
+      tail.rewind();
+    }
+
+  
   }
   // 后端 ajax
   axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + location.href)
