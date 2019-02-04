@@ -181,3 +181,9 @@ img {
   width: 20vw;
   margin-right: 8vw;
 }
+
+.saveImage{
+  font-size: 4vw;
+  padding:0;
+  margin: 0;
+}
