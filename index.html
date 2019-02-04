@@ -36,7 +36,7 @@
         <div data-role="none" class="main-inner__footter">
           <!--<img src="./images/congratulate.png" class="main-inner__footter_word" />-->
           <h3><span id="nickname"></span>恭祝您</h3>
-          <img src="./blessing/blessing0.png" class="main-inner__footter-congratulate" width="80vw" />
+          <img src="./blessing/blessing0.png" class="main-inner__footter-congratulate" />
           <div class="main-inner__qrcode">
             <dl>
               <dt>试码生成<br>定制祝福</dt>
@@ -159,7 +159,7 @@
     tail.changeFrame(21);
   }
   function draw() {
-    scale(deviceW / 750) // 动画缩放
+    scale(deviceW / 790) // 动画缩放
     background(255, 255, 255);
     if (mouseIsPressed)
       tail.goToFrame(4);

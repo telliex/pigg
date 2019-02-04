@@ -110,17 +110,18 @@ img {
 
 #main{
   position: relative;
+  background: #fff;
 }
 
 .container{
-  background:#FFF url(./images/bg-top.png) center -7vh no-repeat;
+  background: url(./images/bg-top.png) center -7vh no-repeat;
   background-size: contain;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   /* height: 100vh; */
 }
 .main-inner{
-  background: url(./images/bg-bottom.png) center bottom no-repeat;
+  background: url(./images/bg-bottom.png) center 80vh no-repeat;
   background-size: contain;
   -webkit-background-size: contain;
   -moz-background-size: contain;
@@ -133,10 +134,11 @@ img {
   padding-bottom: 3vh;
 }
 .main-inner__header_title{
-  width: 10vw;
+  width: 9vw;
   margin: 0 auto;
 }
 .main-inner__body{
+  margin-top:-1vh;
 }
 #myP5{
 }
@@ -145,7 +147,7 @@ img {
 }
 .main-inner__footter h3 {
   text-align: center;
-  font-size: 5vw;
+  font-size: 4vw;
   letter-spacing: 5px;
   color: #3b3f33;
 }
