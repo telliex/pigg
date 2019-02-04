@@ -26,7 +26,7 @@
     console.log('deviceH:' + deviceH)
     var tail; // 尾巴
     var getBlessingTimer;
-    var BlessingString = ['喜獲豬蹄', '妙語如豬', '樂如佩奇', '猪事顺利', '福相如豬', '笑出豬叫', '諸事大吉', '豬圓玉潤', '豬籠入水', '金豬送福', '青春永駐']
+    var BlessingString = ['喜獲豬蹄', '妙語如豬', '樂如佩奇', '猪事顺利', '福相如豬', '笑出豬叫', '諸事大吉', '豬圓玉潤', '豬籠入水', '金豬送福', '青春永駐'];    
     var interactionFn = {
       blessingNumber: 0, //
       getBlessing() {
@@ -48,6 +48,12 @@
         }, 100);
       }
     };
+
+    // 分享标题及描述
+    var sharePersion='欣和'; // 分享人
+    var shareTitle= sharePersion+' 恭祝您欣年快乐，和家平安'; // 分享标题
+    var shareDec= BlessingString[interactionFn.blessingNumber]; // 分享贺话
+
     $('.container').css({
       width: deviceW,
       height: deviceH
@@ -102,8 +108,8 @@
           wx.ready(function () { //通过ready接口处理成功验证
             // config信息验证成功后会执行ready方法
             wx.onMenuShareAppMessage({ // 分享给朋友  ,在config里面填写需要使用的JS接口列表，然后这个方法才可以用
-              title: '欣和祝你新年快乐!!', // 分享标题
-              desc: '欣和祝你猪事顺利', // 分享描述
+              title: shareTitle, // 分享标题
+              desc: shareDec, // 分享描述
               link: 'https://www.shinhoglobal.com/happyNewYear', // 分享链接
               imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
               type: '', // 分享类型,music、video或link，不填默认为link
@@ -116,7 +122,7 @@
               }
             });
             wx.onMenuShareTimeline({ //分享朋友圈
-              title: '欣和祝你新年快乐!!', // 分享标题
+              title: shareTitle, // 分享标题
               link: 'https://www.shinhoglobal.com/happyNewYear',
               imgUrl: 'https://www.shinhoglobal.com/happyNewYear/pig.jpg', // 分享图标
               success: function () {
