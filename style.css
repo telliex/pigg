@@ -108,6 +108,9 @@ img {
   display: block;
 }
 
+#main{
+  position: relative;
+}
 
 .container{
   background:#FFF url(./images/bg-top.png) center -7vh no-repeat;
@@ -117,16 +120,17 @@ img {
   /* height: 100vh; */
 }
 .main-inner{
-  background: url(./images/bg-bottom.png) center 70vh no-repeat;
+  background: url(./images/bg-bottom.png) center bottom no-repeat;
   background-size: contain;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   margin-top:0;
   /* padding-bottom: 10vh; */
+  height: 100vh; 
 }
 .main-inner__header{
- padding-top: 3vh;
- padding-bottom: 3vh;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
 }
 .main-inner__header_title{
   width: 10vw;
@@ -158,7 +162,7 @@ img {
 
 .main-inner__add{
   position: absolute;
-  bottom: 10vh;
+  bottom: 0;
   display: flex;
   flex-direction:row;
   height: 10vh;

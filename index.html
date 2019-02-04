@@ -23,7 +23,7 @@
 
 <body>
 
-  <div data-role="page">
+  <div data-role="page" id="main">
     <div class="container">
       <div class="main-inner">
         <div data-role="none" class="main-inner__header">
@@ -168,14 +168,14 @@
       tail.changeFrame(21);
     animation(tail, deviceW, 517 * deviceW / 720);
   }
-  function mouseClicked() {
+  function mouseClicked() {  
     //rewind on mouse pressed - change frame to 0
     $('.main-inner__footter-congratulate').fadeTo(300,0,function(){
       interactionFn.getBlessingNumber();
     });
     tail.rewind();
   }
-  // 后端
+  // 后端 ajax
   axios.get('https://fsfaconsole.shinho.net.cn/getWxShareInfo?RequestUrl=' + location.href)
     .then(function (res) {
       if (res.status == 200) {
