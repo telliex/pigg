@@ -114,7 +114,7 @@ img {
   background-size: contain;
   -webkit-background-size: contain;
   -moz-background-size: contain;
-   */
+  /* height: 100vh; */
 }
 .main-inner{
   background: url(./images/bg-bottom.png) bottom center no-repeat;
