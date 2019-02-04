@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  font-family: 'Helvetica Neue',Tahoma,Arial,'PingFangSC-Regular','Hiragino Sans GB','Microsoft Yahei',sans-serif;
 }
 
 /*Yes, the universal selector. No, it isn't slow: https://benfrain.com/css-performance-revisited-selectors-bloat-expensive-styles/*/
