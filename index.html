@@ -57,7 +57,7 @@
   <!--输入名字弹出框-->
   <div class="mask" id="popup">
     <div class="popup-name">
-      <h3>请输入你的名字或昵称 <span><span class="length">0</span>/5</span></h3>
+      <h3>请输入你的名字或昵称 <span><span class="length">0</span>/10</span></h3>
       <div><input type="text" class="txt" /></div>
       <p>(你的名字或昵称会被印在定制的猪福上)</p>
       <div class="foot">
@@ -98,8 +98,9 @@
 
   <!--生成图片-->
   <div id="pic">
+    <i>X</i>
     <dl>
-      <dt><img src="" alt=""></dt>
+      <dt><img src="" width="100%" alt=""></dt>
       <dd>长按图片保存</dd>
     </dl>
   </div>
@@ -115,7 +116,7 @@
 
   var tail; // 尾巴
   var getBlessingTimer;
-  var BlessingString = ['喜獲豬蹄', '妙語如豬', '樂如佩奇', '猪事顺利', '福相如豬', '笑出豬叫', '諸事大吉', '豬圓玉潤', '豬籠入水', '金豬送福', '青春永駐'];    
+  var BlessingString = ['喜獲豬蹄', '妙語如豬', '樂如佩奇', '猪事顺利', '福相如豬', '笑出豬叫', '諸事大吉', '豬圓玉潤', '豬籠入水', '金豬送福', '青春永駐'];
   var interactionFn = {
     blessingNumber: 0, //
     getBlessing() {
