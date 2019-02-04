@@ -6,6 +6,7 @@
 }
 .main-inner__qrcode {
     display: none;
+    margin-top: -2vh;
 }
 .main-inner__qrcode dl,
 .main-inner__qrcode dl dt,
@@ -15,6 +16,7 @@
     text-align: center;
 }
 .main-inner__qrcode dl dt {
+    font-size: 1vh;
     letter-spacing: 8px;
     padding-left: 10px;
 }
